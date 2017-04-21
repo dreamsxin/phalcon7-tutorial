@@ -1,0 +1,13 @@
+*~
+*.swp
+.DS_Store
+*.gcno
+*.gcda
+*.o
+*.lo
+*.la
+*.so
+*.loT
+*.in
+*.log
+*.d
