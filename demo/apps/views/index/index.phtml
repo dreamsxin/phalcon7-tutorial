@@ -1,0 +1,8 @@
+<ul>
+	<?php foreach ($artists as $item) { ?>
+	<li><?= $item->id ?>歌手：<?= $item->name ?>
+		<a href="<?= $this->url->get('index/del/'.$item->id) ?>">删除</a>
+		<a href="<?= $this->url->get('index/edit/'.$item->id) ?>">编辑</a>
+	</li>
+	<?php } ?>
+</ul>
