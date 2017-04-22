@@ -47,4 +47,24 @@ class IndexController extends Phalcon\Mvc\Controller {
 		}
 		$this->view->artist = $artist;
 	}
+
+	public function searchAction() {
+		// 获取页码，设置过滤类型 int
+		$page = $this->request->get('page', 'int');
+		// 获取查询关键字
+		$keyword = $this->request->get('keyword', 'string');
+
+		// 创建 QueryBuilder
+		$querybuilder = $this->modelsManager->createBuilder()->from('Artists');
+		if ($keyword) {
+			$querybuilder->where('name like :name:', ['name' => $keyword]);
+		}
+
+		$paginator = new Phalcon\Paginator\Adapter\QueryBuilder(array(
+		      "builder" => $querybuilder,
+		      "limit"=> 5,
+		      "page" => $page
+		));
+		$this->view->artists = $paginator->getPaginate();
+	}
 }

@@ -15,3 +15,7 @@ sqlite3 ./data/demo.db < doc/sqlite.sql
 ## 创建引导
 
 ## 实现歌手的增删改
+
+## 歌手的查询和分页显示
+
+## 增加管理后台

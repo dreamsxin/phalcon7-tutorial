@@ -1,0 +1,15 @@
+<form action="" method="get">
+	<input name="keyword" value="">
+	<button type="submit">查询</button>
+</form>
+<ul>
+	<?php foreach($artists->items as $item ) { ?>
+	<li><?= $item->name ?></li>
+	<?php } ?>
+</ul>
+<a href="<?= $this->url->get('/index/search') ?>">首页</a>
+<a href="<?= $this->url->get('/index/search', ['page' => $artists->before]) ?>">上一页</a>
+<a href="<?= $this->url->get('/index/search', ['page' => $artists->next]) ?>">下一页</a>
+<a href="<?= $this->url->get('/index/search', ['page' => $artists->last]) ?>">尾页</a>
+
+当前页码：<?= $artists->current, " of ", $artists->total_pages; ?>
