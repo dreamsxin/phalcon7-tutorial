@@ -19,3 +19,7 @@ sqlite3 ./data/demo.db < doc/sqlite.sql
 ## 歌手的查询和分页显示
 
 ## 增加管理后台
+
+## 使用多模块
+
+## 用户注册登录

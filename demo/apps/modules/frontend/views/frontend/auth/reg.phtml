@@ -1,0 +1,7 @@
+<form method="post">
+	<input type="text" name="username" />
+	<?= Phalcon\Arr::get($messages, 'username') ?>
+	<input type="password" name="password" />
+	<?= Phalcon\Arr::get($messages, 'password') ?>
+	<input type="submit" value="注册" />
+</form>

@@ -37,6 +37,8 @@ try {
 
     $di->set('router', function () {
         $router = new Phalcon\Mvc\Router;
+        $router->removeExtraSlashes(TRUE);
+
         $router->add('/admin', [
             'namespace' => 'Admin',
         ]);
@@ -46,15 +48,37 @@ try {
         ]);
         $router->add('/admin/:controller/:action/:params', [
             'namespace' => 'Admin',
-            'controller' => 1, // 第一个正则匹配的数据
+            'controller' => 1,
+            'action' => 2,
+            'params' => 3
+        ]);
+        $router->add('/frontend/:controller/:action/:params', [
+            'module' => 'frontend',
+            'controller' => 1,
             'action' => 2,
             'params' => 3
         ]);
         return $router;
     });
 
+    // 组件需要 start 如果 PHP 配置了 session 自动开启，则不需要
+    $session = new \Phalcon\Session\Adapter\Files();
+    $session->start();
+    $di->setShared('session', $session);
+
     // Handle the request
     $application = new Phalcon\Mvc\Application();
+
+    // 注册模块，包含设置模块定义类加载位置
+    $application->registerModules(
+        array(
+            'frontend' => array(
+                'namespaceName' => 'Frontend',
+                'className'     => 'Module',
+                'path'          => __DIR__.'/../apps/modules/frontend/Module.php',
+            ),
+        )
+    );
 
     echo $application->handle()->getContent();
 

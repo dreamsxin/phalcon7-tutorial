@@ -31,7 +31,7 @@ class IndexController extends Phalcon\Mvc\Controller {
 				// 删除成功
 			}
 		}
-		$this->response->redirect('/')->send();exit;
+		return $this->response->redirect('/');
 	}
 
 	public function editAction($id) {
@@ -42,7 +42,7 @@ class IndexController extends Phalcon\Mvc\Controller {
 		if ($this->request->isPost()) {
 			$artist->name = $this->request->getPost('name');
 			if ($artist->save()) {
-				$this->response->redirect('/')->send();exit;
+				return $this->response->redirect('/');
 			}
 		}
 		$this->view->artist = $artist;

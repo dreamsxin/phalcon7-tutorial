@@ -1,0 +1,7 @@
+
+<a href="<?= $this->url->get('frontend/auth/index') ?>">登录</a>
+<a href="<?= $this->url->get('frontend/auth/reg') ?>">注册</a>
+<a href="<?= $this->url->get('frontend/auth/logout') ?>">退出</a>
+
+<p><?php $this->flashSession->output() ?></p>
+<?= $this->getContent() ?>

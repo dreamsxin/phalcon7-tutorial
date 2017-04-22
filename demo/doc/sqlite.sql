@@ -1,3 +1,9 @@
+CREATE TABLE `users` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `username` varchar(60) NOT NULL UNIQUE,
+  `password` varchar(60) NOT NULL
+);
+
 CREATE TABLE `artists` (
   `id` INTEGER PRIMARY KEY AUTOINCREMENT,
   `name` varchar(72) NOT NULL
