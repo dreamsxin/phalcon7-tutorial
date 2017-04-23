@@ -25,3 +25,9 @@ sqlite3 ./data/demo.db < doc/sqlite.sql
 ## 用户注册登录
 
 ## 安全
+
+## 模型数据的格式化输出
+
+## 视图的层级关系
+
+## Section & ViewModel

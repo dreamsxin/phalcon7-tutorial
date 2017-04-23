@@ -15,4 +15,14 @@ class Artists extends Phalcon\Mvc\Model {
 
         return $this->validate($validation);
     }
+
+	public function afterFetch() {
+		$this->name = '歌手：'.$this->name;
+	}
+
+	public function afterToArray($data) {
+		$data['name'] = '我是'.$data['name'];
+		// 这里必须返回格式化后的数据
+		return $data;
+	}
 }

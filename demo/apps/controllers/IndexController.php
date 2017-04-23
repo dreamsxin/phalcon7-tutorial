@@ -6,6 +6,11 @@ class IndexController extends Phalcon\Mvc\Controller {
 	public function indexAction() {
 		$artists = Artists::find();
 		$this->view->artists = $artists;
+
+		$viewmodel = new Phalcon\Mvc\View\Model(NULL, 'models/parent');
+		$viewmodel->addChild(new Phalcon\Mvc\View\Model(NULL, 'models/child1'), 'child1');
+		$viewmodel->addChild(new Phalcon\Mvc\View\Model(NULL, 'models/child2'), 'child2');
+		$this->view->viewmodel = $viewmodel;
 	}
 
 	public function addAction() {

@@ -16,7 +16,7 @@ try {
     // Setup the view component
     $di->set('view', function () {
         $view = new Phalcon\Mvc\View();
-        $view->setViewsDir('../apps/views/');
+        $view->setViewsDir(__DIR__.'/../apps/views/');
         return $view;
     });
 
