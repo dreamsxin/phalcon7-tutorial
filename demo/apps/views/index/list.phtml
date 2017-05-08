@@ -1,0 +1,9 @@
+<form action="" method="get">
+	<input name="keyword" value="">
+	<button type="submit">查询</button>
+</form>
+<ul>
+	<?php foreach($artists as $item ) { ?>
+	<li><?= $item->name ?></li>
+	<?php } ?>
+</ul>

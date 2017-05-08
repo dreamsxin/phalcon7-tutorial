@@ -80,6 +80,13 @@ try {
         )
     );
 
+    /*
+    $application->attachEvent('beforeSendResponse', function($response){
+        $old = $response->getContent();
+        $response->setJsonContent(['old' => $old]);
+    });
+    */
+
     echo $application->handle()->getContent();
 
 } catch (\Exception $e) {

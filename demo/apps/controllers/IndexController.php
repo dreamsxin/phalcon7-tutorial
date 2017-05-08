@@ -2,15 +2,25 @@
 
 class IndexController extends Phalcon\Mvc\Controller {
 
+	/*
+	public function beforeSendResponse($response){
+		$response->setContent('Hello');
+	}
+	*/
+
 	// Action 默认使用的后缀，可以设置修改。
 	public function indexAction() {
 		$artists = Artists::find();
 		$this->view->artists = $artists;
+	}
 
+	public function responseAction() {
 		$viewmodel = new Phalcon\Mvc\View\Model(NULL, 'models/parent');
 		$viewmodel->addChild(new Phalcon\Mvc\View\Model(NULL, 'models/child1'), 'child1');
 		$viewmodel->addChild(new Phalcon\Mvc\View\Model(NULL, 'models/child2'), 'child2');
 		$this->view->viewmodel = $viewmodel;
+
+		return $this->response->setContent('response');
 	}
 
 	public function addAction() {
@@ -58,6 +68,13 @@ class IndexController extends Phalcon\Mvc\Controller {
 		$page = $this->request->get('page', 'int');
 		// 获取查询关键字
 		$keyword = $this->request->get('keyword', 'string');
+		/*
+		if (true) {
+			$this->view->pick('index/list');
+			$this->view->artists = Artists::find();
+			throw new \Phalcon\ContinueException('提前结束');
+		}
+		*/
 
 		// 创建 QueryBuilder
 		$querybuilder = $this->modelsManager->createBuilder()->from('Artists');
